@@ -17,6 +17,8 @@ class Hero(Character):
     def __init__(self):
         super(Hero, self).__init__(10, 5)
 
+    # def attack(self, enemy):
+
 
 class Goblin(Character):
     def __init__(self):
