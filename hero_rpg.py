@@ -8,7 +8,7 @@
 
 
 class Character:
-    def __init__(self, health, power):
+    def __init__(self, name, health, power):
         self.health = health
         self.power = power
 
@@ -26,7 +26,7 @@ class Character:
 
 class Hero(Character):
     def __init__(self):
-        super(Hero, self).__init__(10, 5)
+        super(Hero, self).__init__("Hero", 10, 5)
 
     def alive(self):
         if self.health > 0:
@@ -42,7 +42,7 @@ class Hero(Character):
 
 class Goblin(Character):
     def __init__(self):
-        super(Goblin, self).__init__(6, 2)
+        super(Goblin, self).__init__("Goblin", 6, 2)
 
     def alive(self):
         if self.health > 0:
