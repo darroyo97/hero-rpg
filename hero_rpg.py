@@ -8,33 +8,52 @@
 
 
 class Character:
-    def __init__(self, name, health, power):
-        self.name
+    def __init__(self, health, power):
         self.health = health
         self.power = power
 
-    def alive(self):
-        if self.health > 0:
-            return True
+    # def alive(self):
+    #     if self.health > 0:
+    #         return True
 
-    def attack(self, enemy):
-        if self.alive() == True:
-            enemy.health -= self.power
-            print(f'You do {self.power} damage to the {enemy.name}')
-            if enemy.alive() != True
-            print(f'The {enemy.name} is dead')
+    # def attack(self, enemy):
+    #     if self.alive() == True:
+    #         enemy.health -= self.power
+    #         print(f'You do {self.power} damage to the {enemy.name}')
+    #         if enemy.alive() != True
+    #         print(f'The {enemy.name} is dead')
 
 
 class Hero(Character):
     def __init__(self):
         super(Hero, self).__init__(10, 5)
 
-    # def attack(self, enemy):
+    def alive(self):
+        if self.health > 0:
+            return True
+
+    def attack(self, goblin):
+        if self.alive() == True:
+            goblin.health -= self.power
+            print(f'You do {self.power} damage to the goblin')
+            if goblin.alive() != True:
+                print("The goblin is dead.")
 
 
 class Goblin(Character):
     def __init__(self):
         super(Goblin, self).__init__(6, 2)
+
+    def alive(self):
+        if self.health > 0:
+            return True
+
+    def attack(self, hero):
+        if self.alive() == True:
+            hero.health -= self.power
+            print(f'The goblin does {self.power} to you')
+            if hero.alive() != True:
+                print("You are dead.")
 
 
 hero = Hero()
