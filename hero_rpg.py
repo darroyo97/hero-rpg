@@ -8,9 +8,21 @@
 
 
 class Character:
-    def __init__(self, health, power):
+    def __init__(self, name, health, power):
+        self.name
         self.health = health
         self.power = power
+
+    def alive(self):
+        if self.health > 0:
+            return True
+
+    def attack(self, enemy):
+        if self.alive() == True:
+            enemy.health -= self.power
+            print(f'You do {self.power} damage to the {enemy.name}')
+            if enemy.alive() != True
+            print(f'The {enemy.name} is dead')
 
 
 class Hero(Character):
