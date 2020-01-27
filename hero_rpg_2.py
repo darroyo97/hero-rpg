@@ -1,4 +1,7 @@
 import random
+# not sure how to change the prop of it being 10 random to only 20% chance
+hero_attack_list = [5, 10]
+hero_attack = random.choice(hero_attack_list)
 
 
 class Character:
@@ -21,8 +24,9 @@ class Character:
 
 
 class Hero(Character):
+
     def __init__(self):
-        super(Hero, self).__init__("Hero", 10, 5)
+        super(Hero, self).__init__("Hero", 10, hero_attack)
 
 
 class Goblin(Character):
