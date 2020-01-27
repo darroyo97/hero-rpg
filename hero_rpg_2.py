@@ -10,10 +10,10 @@ class Character:
     def alive(self):
         if self.health > 0:
             return True
-
+# this is enemy attakcing hero
     def attack(self, enemy):
 
-        if enemy.name != "Zombie" and self.alive() == True:
+        if self.alive() == True:
             enemy.health -= self.power
             print(f'{self.name} does {self.power} damage to the {enemy.name}')
             if enemy.alive() != True:
@@ -24,24 +24,26 @@ class Character:
 class Hero(Character):
 
     def __init__(self):
-        super(Hero, self).__init__("Hero", 1000, 5)
+        super(Hero, self).__init__("Hero", 10, 5)
+# this is hero atatcking enemy
 
     def attack(self, enemy):
         power = self.power
-        if random.randint(0, 100) < 20:
-            power = self.power * 2
-            print('Critical hit!')
-        enemy.health -= power
-        print("The {} does {} damage to {}".format(
-            self.name, power, enemy.name))
-        if enemy.name == "Medic":
+        if enemy.name != "Zombie" and self.alive() == True:
             if random.randint(0, 100) < 20:
-                enemy.health + 2
-                print(f' {enemy.name} used health regain !')
+                power = self.power * 2
+                print('Critical hit!')
+            enemy.health -= power
+            print("The {} does {} damage to {}".format(
+                self.name, power, enemy.name))
+            if enemy.name == "Medic":
+                if random.randint(0, 100) < 20:
+                    enemy.health + 2
+                    print(f' {enemy.name} used health regain !')
 
-        if enemy.alive() != True:
+            if enemy.alive() != True:
 
-            print(f'The {enemy.name} is dead')
+                print(f'The {enemy.name} is dead')
 
 
 class Goblin(Character):
@@ -56,14 +58,20 @@ class Zombie(Character):
 
 class Medic(Character):
     def __init__(self):
-        super(Medic, self).__init__("Medic", 1000, 2)
+        super(Medic, self).__init__("Medic", 20, 2)
+
+
+class Shadow(Character):
+    def __init__(self):
+        super(Shadow, self).__init__("Shadow", 1, 2)
 
 
 hero = Hero()
 goblin = Goblin()
 zombie = Zombie()
 medic = Medic()
-enemy_list = [medic]
+shadow = Shadow()
+enemy_list = [medic, goblin, zombie]
 enemy_char = random.choice(enemy_list)
 
 
