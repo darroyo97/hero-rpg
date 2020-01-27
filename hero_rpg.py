@@ -66,7 +66,7 @@ def main():
     # goblin_health = 6
     # goblin_power = 2
 
-    while goblin.alive() > 0 and hero.alive() > 0:
+    while goblin.alive() and hero.alive():
         print("You have {} health and {} power.".format(hero.health, hero.power))
         print("The goblin has {} health and {} power.".format(
             goblin.health, goblin.power))
@@ -87,7 +87,7 @@ def main():
         else:
             print("Invalid input {}".format(raw_input))
 
-        if goblin.health > 0:
+        if goblin.alive():
             goblin.attack(hero)
 
 
