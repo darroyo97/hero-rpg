@@ -1,9 +1,11 @@
 import random
 # not sure how to change the prop of it being 10 random to only 20% chance
 hero_attack_list = [5, 10]
-hero_attack = random.choice(hero_attack_list)
-medic_health_add = [0, 2]
-medic_health = random.choice(medic_health_add)
+weights = [.80, .20]
+print(hero_attack_list)
+hero_attack = random.choices(hero_attack_list, weights)
+print(hero_attack)
+print(hero_attack[0])
 
 
 class Character:
@@ -31,22 +33,22 @@ class Character:
 class Hero(Character):
 
     def __init__(self):
-        super(Hero, self).__init__("Hero", 10, hero_attack)
+        super(Hero, self).__init__("Hero", 100, hero_attack[0])
 
 
 class Goblin(Character):
     def __init__(self):
-        super(Goblin, self).__init__("Goblin", 6, 2)
+        super(Goblin, self).__init__("Goblin", 60, 2)
 
 
 class Zombie(Character):
     def __init__(self):
-        super(Zombie, self).__init__("Zombie", 10, 1)
+        super(Zombie, self).__init__("Zombie", 100, 1)
 
 
 class Medic(Character):
     def __init__(self):
-        super(Medic, self).__init__("Medic", 10, 1)
+        super(Medic, self).__init__("Medic", 100, 1)
 
 
 hero = Hero()
