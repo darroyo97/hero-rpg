@@ -78,19 +78,25 @@ class Chicken(Character):
         super(Chicken, self).__init__("Chicken", 10, 1)
 
 
+class Fish(Character):
+    def __init__(self):
+        super(Fish, self).__init__("Fish", 0, 0)
+
+
 hero = Hero()
 goblin = Goblin()
 zombie = Zombie()
 medic = Medic()
 shadow = Shadow()
 chicken = Chicken()
-enemy_list = [medic, goblin, zombie, chicken]
+fish = Fish()
+enemy_list = [fish]
 enemy_char = random.choice(enemy_list)
 
 
 def main(enemy):
-
-    while enemy.alive() and hero.alive():
+    # enemy.alive() and
+    while hero.alive():
         print("You have {} health and {} power.".format(hero.health, hero.power))
         print("The {} has {} health and {} power.".format(
             enemy.name, enemy.health, enemy.power))
@@ -101,6 +107,9 @@ def main(enemy):
         print("3. flee")
         print("> ", end=' ')
         raw_input = input()
+        if enemy.name == "Fish":
+            print(f'The {enemy.name} is dead because it has no water')
+            # lets fish get negative health and gaem never breaks can use this logic for zombie with negative health
         if raw_input == "1":
             hero.attack(enemy)
         elif raw_input == "2":
