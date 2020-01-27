@@ -38,8 +38,15 @@ class Hero(Character):
                 self.name, power, enemy.name))
             if enemy.name == "Medic":
                 if random.randint(0, 100) < 20:
-                    enemy.health + 2
+                    enemy.health += 2
                     print(f' {enemy.name} used health regain !')
+            if enemy.name == "Shadow":
+                pass
+            # add func that can only be attack once every 10 turns
+            if enemy.name == "Chicken":
+                if random.randint(0, 100) < 10:
+                    enemy.power += 99
+                    print(f'The {enemy.name} laid a destructive egg !')
 
             if enemy.alive() != True:
 
@@ -66,12 +73,18 @@ class Shadow(Character):
         super(Shadow, self).__init__("Shadow", 1, 2)
 
 
+class Chicken(Character):
+    def __init__(self):
+        super(Chicken, self).__init__("Chicken", 10, 1)
+
+
 hero = Hero()
 goblin = Goblin()
 zombie = Zombie()
 medic = Medic()
 shadow = Shadow()
-enemy_list = [medic, goblin, zombie]
+chicken = Chicken()
+enemy_list = [medic, goblin, zombie, chicken]
 enemy_char = random.choice(enemy_list)
 
 
