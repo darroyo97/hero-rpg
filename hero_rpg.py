@@ -12,9 +12,9 @@ class Character:
         self.health = health
         self.power = power
 
-    # def alive(self):
-    #     if self.health > 0:
-    #         return True
+    def alive(self):
+        if self.health > 0:
+            return True
 
     # def attack(self, enemy):
     #     if self.alive() == True:
@@ -28,10 +28,6 @@ class Hero(Character):
     def __init__(self):
         super(Hero, self).__init__("Hero", 10, 5)
 
-    def alive(self):
-        if self.health > 0:
-            return True
-
     def attack(self, goblin):
         if self.alive() == True:
             goblin.health -= self.power
@@ -43,10 +39,6 @@ class Hero(Character):
 class Goblin(Character):
     def __init__(self):
         super(Goblin, self).__init__("Goblin", 6, 2)
-
-    def alive(self):
-        if self.health > 0:
-            return True
 
     def attack(self, hero):
         if self.alive() == True:
