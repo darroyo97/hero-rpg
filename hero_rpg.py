@@ -20,8 +20,8 @@ class Character:
     #     if self.alive() == True:
     #         enemy.health -= self.power
     #         print(f'You do {self.power} damage to the {enemy.name}')
-    #         if enemy.alive() != True
-    #         print(f'The {enemy.name} is dead')
+    #         if enemy.alive() != True:
+    #             print(f'The {enemy.name} is dead')
 
 
 class Hero(Character):
