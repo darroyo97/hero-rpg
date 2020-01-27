@@ -1,10 +1,4 @@
-#!/usr/bin/env python
-
-# In this simple RPG game, the hero fights the goblin. He has the options to:
-
-# 1. fight goblin
-# 2. do nothing - in which case the goblin will attack him anyway
-# 3. flee
+import random
 
 
 class Character:
@@ -30,24 +24,10 @@ class Hero(Character):
     def __init__(self):
         super(Hero, self).__init__("Hero", 10, 5)
 
-    # def attack(self, goblin):
-    #     if self.alive() == True:
-    #         goblin.health -= self.power
-    #         print(f'You do {self.power} damage to the goblin')
-    #         if goblin.alive() != True:
-    #             print("The goblin is dead.")
-
 
 class Goblin(Character):
     def __init__(self):
         super(Goblin, self).__init__("Goblin", 6, 2)
-
-    # def attack(self, hero):
-    #     if self.alive() == True:
-    #         hero.health -= self.power
-    #         print(f'The goblin does {self.power} to you')
-    #         if hero.alive() != True:
-    #             print("You are dead.")
 
 
 class Zombie(Character):
@@ -58,13 +38,11 @@ class Zombie(Character):
 hero = Hero()
 goblin = Goblin()
 zombie = Zombie()
+enemy_list = [zombie, goblin]
+enemy_char = random.choice(enemy_list)
 
 
 def main(enemy):
-    # hero_health = 10
-    # hero_power = 5
-    # goblin_health = 6
-    # goblin_power = 2
 
     while enemy.alive() and hero.alive():
         print("You have {} health and {} power.".format(hero.health, hero.power))
@@ -91,4 +69,4 @@ def main(enemy):
             enemy.attack(hero)
 
 
-main(zombie)
+main(enemy_char)
