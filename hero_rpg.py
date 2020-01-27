@@ -78,11 +78,12 @@ def main():
         print("> ", end=' ')
         raw_input = input()
         if raw_input == "1":
+            hero.attack(goblin)
             # Hero attacks goblin
-            goblin.health -= hero.power
-            print("You do {} damage to the goblin.".format(hero.power))
-            if goblin.health <= 0:
-                print("The goblin is dead.")
+            # goblin.health -= hero.power
+            # print("You do {} damage to the goblin.".format(hero.power))
+            # if goblin.health <= 0:
+            #     print("The goblin is dead.")
         elif raw_input == "2":
             pass
         elif raw_input == "3":
@@ -92,11 +93,12 @@ def main():
             print("Invalid input {}".format(raw_input))
 
         if goblin.health > 0:
+            goblin.attack(hero)
             # Goblin attacks hero
-            hero.health -= goblin.power
-            print("The goblin does {} damage to you.".format(goblin.power))
-            if hero.health <= 0:
-                print("You are dead.")
+            # hero.health -= goblin.power
+            # print("The goblin does {} damage to you.".format(goblin.power))
+            # if hero.health <= 0:
+            #     print("You are dead.")
 
 
 main()
