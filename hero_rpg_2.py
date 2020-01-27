@@ -1,11 +1,4 @@
 import random
-# not sure how to change the prop of it being 10 random to only 20% chance
-hero_attack_list = [5, 10]
-weights = [.80, .20]
-print(hero_attack_list)
-hero_attack = random.choices(hero_attack_list, weights)
-print(hero_attack)
-print(hero_attack[0])
 
 
 class Character:
@@ -23,8 +16,6 @@ class Character:
         if enemy.name != "Zombie" and self.alive() == True:
             enemy.health -= self.power
             print(f'{self.name} does {self.power} damage to the {enemy.name}')
-            # if enemy.name == "Medic":
-            #     enemy.health + medic_health
             if enemy.alive() != True:
 
                 print(f'The {enemy.name} is dead')
@@ -33,29 +24,46 @@ class Character:
 class Hero(Character):
 
     def __init__(self):
-        super(Hero, self).__init__("Hero", 100, hero_attack[0])
+        super(Hero, self).__init__("Hero", 1000, 5)
+
+    def attack(self, enemy):
+        power = self.power
+        if random.randint(0, 100) < 20:
+            power = self.power * 2
+            print('Critical hit!')
+        enemy.health -= power
+        print("The {} does {} damage to {}".format(
+            self.name, power, enemy.name))
+        if enemy.name == "Medic":
+            if random.randint(0, 100) < 20:
+                enemy.health + 2
+                print(f' {enemy.name} used health regain !')
+
+        if enemy.alive() != True:
+
+            print(f'The {enemy.name} is dead')
 
 
 class Goblin(Character):
     def __init__(self):
-        super(Goblin, self).__init__("Goblin", 60, 2)
+        super(Goblin, self).__init__("Goblin", 6, 2)
 
 
 class Zombie(Character):
     def __init__(self):
-        super(Zombie, self).__init__("Zombie", 100, 1)
+        super(Zombie, self).__init__("Zombie", 10, 1)
 
 
 class Medic(Character):
     def __init__(self):
-        super(Medic, self).__init__("Medic", 100, 1)
+        super(Medic, self).__init__("Medic", 1000, 2)
 
 
 hero = Hero()
 goblin = Goblin()
 zombie = Zombie()
 medic = Medic()
-enemy_list = [zombie, goblin, medic]
+enemy_list = [medic]
 enemy_char = random.choice(enemy_list)
 
 
