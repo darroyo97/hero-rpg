@@ -2,6 +2,8 @@ import random
 # not sure how to change the prop of it being 10 random to only 20% chance
 hero_attack_list = [5, 10]
 hero_attack = random.choice(hero_attack_list)
+medic_health_add = [0, 2]
+medic_health = random.choice(medic_health_add)
 
 
 class Character:
@@ -19,7 +21,10 @@ class Character:
         if enemy.name != "Zombie" and self.alive() == True:
             enemy.health -= self.power
             print(f'{self.name} does {self.power} damage to the {enemy.name}')
+            # if enemy.name == "Medic":
+            #     enemy.health + medic_health
             if enemy.alive() != True:
+
                 print(f'The {enemy.name} is dead')
 
 
@@ -39,10 +44,16 @@ class Zombie(Character):
         super(Zombie, self).__init__("Zombie", 10, 1)
 
 
+class Medic(Character):
+    def __init__(self):
+        super(Medic, self).__init__("Medic", 10, 1)
+
+
 hero = Hero()
 goblin = Goblin()
 zombie = Zombie()
-enemy_list = [zombie, goblin]
+medic = Medic()
+enemy_list = [zombie, goblin, medic]
 enemy_char = random.choice(enemy_list)
 
 
