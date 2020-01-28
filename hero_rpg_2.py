@@ -90,7 +90,7 @@ medic = Medic()
 shadow = Shadow()
 chicken = Chicken()
 fish = Fish()
-enemy_list = [fish]
+enemy_list = [fish,chicken,goblin,medic,zombie]
 enemy_char = random.choice(enemy_list)
 
 
